@@ -88,11 +88,16 @@ float kynd5(float x, float expo) {
 /*******************************************************************/
 
 /**
- * Trace a line
+ * Trace a line.
+ * Returns the difference between 2 smoothstep calls.
+ * The smoothstep function perform smooth Hermite interpolation between two values:
+ * 1st argument specifies the value of the lower edge of the Hermite function
+ * 2nd argument specifies the value of the upper edge of the Hermite function
+ * 3nd argument specifies the source value for interpolation (here it's st.y)  
  */
 float plot(vec2 st, float y) {
     float w = 0.009;
-    return smoothstep(y-w, y, st.y) - smoothstep(y, y+w, st.y);
+    return smoothstep(y - w, y, st.y) - smoothstep(y, y + w, st.y);
 }
 
 /*******************************************************************/

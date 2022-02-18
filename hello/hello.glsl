@@ -30,6 +30,10 @@ float expImpulse(float x, float k) {
     return h * exp(1.0 - h);
 }
 
+float parabola(float x, float k){
+    return pow(4.0 * x * (1.0 - x), k);
+}
+
 float cubicPulse(float c, float w, float x) {
     x = abs(x - c);
     if (x > w) return 0.0;
@@ -47,6 +51,33 @@ float almostIdentity(float x, float m, float n) {
 
 float almostUnitIdentity(float x) {
     return x * x * (2.0 - x);
+}
+
+/*******************************************************************/
+
+
+/*******************************************************************/
+/* Shaping functions with Kynd equations                           */
+/*******************************************************************/
+
+float kynd1(float x, float expo) {
+    return 1.0 - pow(abs(x), expo);
+}
+
+float kynd2(float x, float expo) {
+    return pow(cos(PI * x / 2.0), expo);
+}
+
+float kynd3(float x, float expo) {
+    return 1.0 - pow(abs(sin(PI * x / 2.0)), expo);
+}
+
+float kynd4(float x, float expo) {
+    return pow(min(cos(PI * x / 2.0), 1.0 - abs(x)), expo);
+}
+
+float kynd5(float x, float expo) {
+    return 1.0 - pow(max(0.0, abs(x) * 2.0 - 1.0), expo);
 }
 
 /*******************************************************************/
@@ -75,7 +106,7 @@ void main() {
     //y = cos(st.x);
     //y = sin(u_time + st.x);
     //y = sin(u_time * st.x);
-    y = sin(st.x * PI);
+    //y = sin(st.x * PI);
     //y = sin(st.x * PIH);
     //y = sin(st.x * PI180);
     //y = sin(st.x) * 2.0;
@@ -94,11 +125,20 @@ void main() {
     //y = min(0.0, st.x); // return the lesser of x and 0.0
     //y = max(0.0, st.x); // return the greater of x and 0.0
 
+    // Shaping with Inigo functions
     //y = impulse(12.0, st.x);
     //y = almostIdentity(st.x, 0.4, 0.);
     //y = almostUnitIdentity(st.x);
     //y = expImpulse(st.x, 10.0);
     //y = cubicPulse(0.5, 0.2, st.x);
+    //y = parabola(st.x, 1.0);
+
+    // Shaping with kynd functions
+    //y = kynd1(st.x, 0.5);
+    //y = kynd2(st.x, 3.5);
+    //y = kynd3(st.x, 2.5);
+    //y = kynd4(st.x, 0.5);
+    //y = kynd5(st.x, 1.0);
     
     float pct = plot(st, y);
 

@@ -107,7 +107,7 @@ void main() {
     vec2 st = gl_FragCoord.xy / u_resolution;
     
     float y;
-    //y = sin(st.x);
+    y = sin(st.x);
     //y = cos(st.x);
     //y = sin(u_time + st.x);
     //y = sin(u_time * st.x);

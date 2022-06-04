@@ -79,7 +79,6 @@ float kynd5(float x,float expo){
 // Trace a line.
 // Returns the difference between 2 smoothstep calls.
 float plot(vec2 st,float y){
-    float w=.009;
     // The smoothstep function perform smooth Hermite
     // interpolation between two values:
     // 1st arg specifies the value of the lower edge of the
@@ -88,6 +87,7 @@ float plot(vec2 st,float y){
     // Hermite function.
     // 3nd arg specifies the source value for
     // interpolation (here it's st.y).
+    float w=.009;
     return smoothstep(y-w,y,st.y)-smoothstep(y,y+w,st.y);
 }
 
@@ -108,7 +108,7 @@ void main(){
     //y = ceil(sin(st.x));
     //y = floor(sin(st.x));
     
-    y=step(0.5,st.x);
+    y=step(.5,st.x);
     //y = mod(st.x, 0.5); // return x modulo of 0.5
     //y = fract(st.x); // return only the fraction part of a number
     //y = ceil(st.x); // nearest integer that is greater than or equal to x
@@ -138,7 +138,7 @@ void main(){
     
     vec3 bg=vec3(y);
     
-    vec3 linecolor=vec3(0.1451, 1.0, 0.1137);
+    vec3 linecolor=vec3(.0,1.,.0);
     
     vec3 finalcolor=((1.-pct)*bg)+(pct*linecolor);
     

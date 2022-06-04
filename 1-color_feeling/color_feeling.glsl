@@ -13,31 +13,39 @@ precision mediump float;
 #endif
 
 #define PI 3.14159265359
-#define PIH 1.57079632679
-#define PI180 565.486677646
 
 uniform vec2 u_resolution;
 uniform float u_time;
 
-float impulse(float k,float x){
-    float h=k*x;
-    return h*exp(1.-h);
+float blink(float t,float freq){
+    // No x here and we use sign() because we want
+    // blunt blink effect, no smooth "transition" between
+    // the 2 values. We have -1 and 1 alternatively.
+    return sign(sin(t*freq));
 }
-
-float kynd2(float x,float expo){
-    return pow(cos(PI*x/2.),expo);
-}
-
-vec3 colorA=vec3(.3765,0.,.9882);
-vec3 colorB=vec3(.8745,1.,.3059);
 
 void main(){
-    vec3 color=vec3(0.);
+    // Black and red (anger emotion)
+    vec3 colorA=vec3(0.,0.,0.);
+    vec3 colorB=vec3(.7,.1,.1);
     
-    float pct=abs(sin(u_time));
+    // Nice blue and light green (calming down)
+    vec3 colorC=vec3(.149,.3804,.9647);
+    vec3 colorD=vec3(.0902,1.,.6353);
     
-    // Mix uses pct (a value from 0-1) to mix the two colors
-    color=mix(colorA,colorB,pct);
+    vec3 finalColor=vec3(0.);
     
-    gl_FragColor=vec4(color,1.);
+    // Blinking (anger)
+    float pct=blink(u_time,14.);
+    // Smooth from blue to green (calming down)
+    //float pct=clamp(u_time/10.,.0,.40);
+    
+    // Mix uses pct (a value from 0-1) to mix colors
+    // I don't know how to do the blinking first and
+    // when it reaches a certain value, do the smooth
+    // transition between blue/green.
+    finalColor=mix(colorA,colorB,pct);
+    //finalColor=mix(colorC,colorD,pct);
+    
+    gl_FragColor=vec4(finalColor,1.);
 }

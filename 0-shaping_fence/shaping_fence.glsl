@@ -15,61 +15,61 @@ uniform float u_time;
 // #    https://www.iquilezles.org       #
 // #######################################
 
-float impulse(float k,float x){
-    float h=k*x;
-    return h*exp(1.-h);
+float impulse(float k, float x) {
+    float h = k*x;
+    return h * exp(1.0 - h);
 }
 
-float expImpulse(float x,float k){
-    float h=k*x;
-    return h*exp(1.-h);
+float expImpulse(float x, float k) {
+    float h = k*x;
+    return h * exp(1.0 - h);
 }
 
-float parabola(float x,float k){
-    return pow(4.*x*(1.-x),k);
+float parabola(float x, float k) {
+    return pow(4.0 * x*(1.0 - x), k);
 }
 
-float cubicPulse(float c,float w,float x){
-    x=abs(x-c);
-    if(x>w)return 0.;
-    x/=w;
-    return 1.-x*x*(3.-2.*x);
+float cubicPulse(float c, float w, float x) {
+    x = abs(x - c);
+    if (x > w)return 0.0;
+    x /= w;
+    return 1.0 - x*x * (3.0 - 2.0 * x);
 }
 
-float almostIdentity(float x,float m,float n){
-    if(x>m)return x;
-    float a=2.*n-m;
-    float b=2.*m-3.*n;
-    float t=x/m;
-    return(a*t+b)*t*t+n;
+float almostIdentity(float x, float m, float n) {
+    if (x > m)return x;
+    float a = 2.0 * n-m;
+    float b = 2.0 * m-3.0 * n;
+    float t = x /m;
+    return (a * t+b) * t*t + n;
 }
 
-float almostUnitIdentity(float x){
-    return x*x*(2.-x);
+float almostUnitIdentity(float x) {
+    return x * x*(2.0 - x);
 }
 
 // #########################################
 // # Shaping functions with Kynd equations #
 // #########################################
 
-float kynd1(float x,float expo){
-    return 1.-pow(abs(x),expo);
+float kynd1(float x, float expo) {
+    return 1.0 - pow(abs(x), expo);
 }
 
-float kynd2(float x,float expo){
-    return pow(cos(PI*x/2.),expo);
+float kynd2(float x, float expo) {
+    return pow(cos(PI * x /2.0), expo);
 }
 
-float kynd3(float x,float expo){
-    return 1.-pow(abs(sin(PI*x/2.)),expo);
+float kynd3(float x, float expo) {
+    return 1.0 - pow(abs(sin(PI * x /2.0)), expo);
 }
 
-float kynd4(float x,float expo){
-    return pow(min(cos(PI*x/2.),1.-abs(x)),expo);
+float kynd4(float x, float expo) {
+    return pow(min(cos(PI * x /2.0), 1.0 - abs(x)), expo);
 }
 
-float kynd5(float x,float expo){
-    return 1.-pow(max(0.,abs(x)*2.-1.),expo);
+float kynd5(float x, float expo) {
+    return 1.0 - pow(max(0.0, abs(x) * 2.0 - 1.0), expo);
 }
 
 // #######################
@@ -78,7 +78,7 @@ float kynd5(float x,float expo){
 
 // Trace a line.
 // Returns the difference between 2 smoothstep calls.
-float plot(vec2 st,float y){
+float plot(vec2 st, float y) {
     // The smoothstep function perform smooth Hermite
     // interpolation between two values:
     // 1st arg specifies the value of the lower edge of the
@@ -87,12 +87,12 @@ float plot(vec2 st,float y){
     // Hermite function.
     // 3nd arg specifies the source value for
     // interpolation (here it's st.y).
-    float w=.009;
-    return smoothstep(y-w,y,st.y)-smoothstep(y,y+w,st.y);
+    float w = 0.009;
+    return smoothstep(y - w, y, st.y) - smoothstep(y, y + w, st.y);
 }
 
-void main(){
-    vec2 st=gl_FragCoord.xy/u_resolution;
+void main() {
+    vec2 st = gl_FragCoord.xy / u_resolution;
     
     float y;
     //y = sin(st.x);
@@ -108,7 +108,7 @@ void main(){
     //y = ceil(sin(st.x));
     //y = floor(sin(st.x));
     
-    y=step(.5,st.x);
+    y = step(0.5, st.x);
     //y = mod(st.x, 0.5); // return x modulo of 0.5
     //y = fract(st.x); // return only the fraction part of a number
     //y = ceil(st.x); // nearest integer that is greater than or equal to x
@@ -134,13 +134,13 @@ void main(){
     //y = kynd4(st.x, 0.5);
     //y = kynd5(st.x, 1.0);
     
-    float pct=plot(st,y);
+    float pct = plot(st, y);
     
-    vec3 bg=vec3(y);
+    vec3 bg = vec3(y);
     
-    vec3 linecolor=vec3(.0,1.,.0);
+    vec3 linecolor = vec3(0.0, 1.0, 0.0);
     
-    vec3 finalcolor=((1.-pct)*bg)+(pct*linecolor);
+    vec3 finalcolor = ((1.0 - pct) * bg) + (pct * linecolor);
     
-    gl_FragColor=vec4(finalcolor,1.);
+    gl_FragColor = vec4(finalcolor, 1.0);
 }

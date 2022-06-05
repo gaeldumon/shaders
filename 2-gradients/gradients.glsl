@@ -22,6 +22,8 @@ void main() {
     
     vec3 pct = vec3(st.x);
     
+    // The lines visualize the amount of colorA and
+    // colorB to mix per channel
     pct.r = smoothstep(0.0, 1.0, st.x);
     pct.g = sin(st.x * PI);
     pct.b = pow(st.x, 0.5);

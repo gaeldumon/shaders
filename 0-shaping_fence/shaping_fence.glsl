@@ -40,7 +40,7 @@ float almostIdentity(float x, float m, float n) {
     if (x > m)return x;
     float a = 2.0 * n-m;
     float b = 2.0 * m-3.0 * n;
-    float t = x /m;
+    float t = x / m;
     return (a * t+b) * t*t + n;
 }
 
@@ -57,19 +57,45 @@ float kynd1(float x, float expo) {
 }
 
 float kynd2(float x, float expo) {
-    return pow(cos(PI * x /2.0), expo);
+    return pow(cos(PI * x / 2.0), expo);
 }
 
 float kynd3(float x, float expo) {
-    return 1.0 - pow(abs(sin(PI * x /2.0)), expo);
+    return 1.0 - pow(abs(sin(PI * x / 2.0)), expo);
 }
 
 float kynd4(float x, float expo) {
-    return pow(min(cos(PI * x /2.0), 1.0 - abs(x)), expo);
+    return pow(min(cos(PI * x / 2.0), 1.0 - abs(x)), expo);
 }
 
 float kynd5(float x, float expo) {
     return 1.0 - pow(max(0.0, abs(x) * 2.0 - 1.0), expo);
+}
+
+// ######################################################
+// # Shaping functions from Flong Archive (Golan Levin) #
+// # flong.com/archive/texts/code/shapers_poly          #
+// ######################################################
+
+float doubleCubicSeatWithLinearBlend(float x, float a, float b) {
+    float epsilon = 0.00001;
+    float min_param_a = 0.0 + epsilon;
+    float max_param_a = 1.0 - epsilon;
+    float min_param_b = 0.0;
+    float max_param_b = 1.0;
+    a = min(max_param_a, max(min_param_a, a));
+    b = min(max_param_b, max(min_param_b, b));
+    // reverse for intelligibility
+    b = 1.0 - b;
+    
+    float y = 0.0;
+    if (x <= a) {
+        y = b*x + (1.0 - b) * a*(1.0 - pow(1.0 - x / a, 3.0));
+    } else {
+        y = b*x + (1.0 - b) * (a + (1.0 - a) * pow((x - a) / (1.0 - a), 3.0));
+    }
+    
+    return y;
 }
 
 // #######################
@@ -108,7 +134,7 @@ void main() {
     //y = ceil(sin(st.x));
     //y = floor(sin(st.x));
     
-    y = step(0.5, st.x);
+    //y = step(0.5, st.x);
     //y = mod(st.x, 0.5); // return x modulo of 0.5
     //y = fract(st.x); // return only the fraction part of a number
     //y = ceil(st.x); // nearest integer that is greater than or equal to x
@@ -125,14 +151,14 @@ void main() {
     //y = almostUnitIdentity(st.x);
     //y = expImpulse(st.x, 10.0);
     //y = cubicPulse(0.5, 0.2, st.x);
-    //y=parabola(st.x,1.);
+    //y = parabola(st.x,1.);
     
     // Shaping with kynd functions
     //y = kynd1(st.x, 0.5);
     //y = kynd2(st.x, 3.5);
     //y = kynd3(st.x, 2.5);
     //y = kynd4(st.x, 0.5);
-    //y = kynd5(st.x, 1.0);
+    y = kynd5(st.x, 1.0);
     
     float pct = plot(st, y);
     

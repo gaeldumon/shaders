@@ -40,21 +40,25 @@ float doubleCubicSeatWithLinearBlend(float x, float a, float b) {
 void main() {
     vec2 st = gl_FragCoord.xy / u_resolution.xy;
     vec3 color = vec3(0.0);
+
+    float ax = st.x;
     
     vec3 pct = vec3(st.x);
     
     // The lines visualize the amount of colorA and
     // colorB to mix per channel
-    pct.r = smoothstep(0.0, 0.2, st.y);
-    pct.g = doubleCubicSeatWithLinearBlend(st.y, 0.5, 0.8);
-    pct.b = pow(st.y, 0.3);
+    pct.r = smoothstep(0.0, 0.2, ax);
+    pct.g = doubleCubicSeatWithLinearBlend(ax, 0.6, 0.8);
+    pct.b = pow(ax, 0.3);
     
     color = mix(colorA, colorB, pct);
     
     // Plot transition lines for each channel
-    // color = mix(color, vec3(1.0, 0.0, 0.0), plot(st, pct.r));
-    // color = mix(color, vec3(0.0, 1.0, 0.0), plot(st, pct.g));
-    // color = mix(color, vec3(0.0, 0.0, 1.0), plot(st, pct.b));
+    if (ax == st.x) {
+        color = mix(color, vec3(1.0, 0.0, 0.0), plot(st, pct.r));
+        color = mix(color, vec3(0.0, 1.0, 0.0), plot(st, pct.g));
+        color = mix(color, vec3(0.0, 0.0, 1.0), plot(st, pct.b));
+    }
     
     gl_FragColor = vec4(color, 1.0);
 }

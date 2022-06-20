@@ -1,0 +1,14 @@
+.title {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+#main-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+canvas {
+    margin: 3px;
+    position: relative;
+}

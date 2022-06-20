@@ -121,44 +121,44 @@ void main() {
     vec2 st = gl_FragCoord.xy / u_resolution;
     
     float y;
-    //y = sin(st.x);
-    //y = cos(st.x);
-    //y = sin(u_time + st.x);
-    //y = sin(u_time * st.x);
-    //y = sin(st.x * PI);
-    //y = sin(st.x * PIH);
-    //y = sin(st.x * PI180);
-    //y = sin(st.x) * 2.0;
-    //y = abs(sin(st.x));
-    //y = fract(sin(st.x));
-    //y = ceil(sin(st.x));
-    //y = floor(sin(st.x));
+    // y = sin(st.x);
+    // y = cos(st.x);
+    // y = sin(u_time + st.x);
+    // y = sin(u_time * st.x);
+    // y = sin(st.x * PI);
+    // y = sin(st.x * PIH);
+    // y = sin(st.x * PI180);
+    // y = sin(st.x) * 2.0;
+    // y = abs(sin(st.x));
+    // y = fract(sin(st.x));
+    // y = ceil(sin(st.x));
+    // y = floor(sin(st.x));
     
-    //y = step(0.5, st.x);
-    //y = mod(st.x, 0.5); // return x modulo of 0.5
-    //y = fract(st.x); // return only the fraction part of a number
-    //y = ceil(st.x); // nearest integer that is greater than or equal to x
-    //y = floor(st.x); // nearest integer less than or equal to x
-    //y = sign(st.x); // extract the sign of x
-    //y = abs(st.x); // return the absolute value of x
-    //y = clamp(st.x, 0.0, 1.0); // constrain x to lie between 0.0 and 1.0
-    //y = min(0.0, st.x); // return the lesser of x and 0.0
-    //y = max(0.0, st.x); // return the greater of x and 0.0
+    // y = step(0.5, st.x);
+    // y = mod(st.x, 0.5); // return x modulo of 0.5
+    // y = fract(st.x); // return only the fraction part of a number
+    // y = ceil(st.x); // nearest integer that is greater than or equal to x
+    // y = floor(st.x); // nearest integer less than or equal to x
+    // y = sign(st.x); // extract the sign of x
+    // y = abs(st.x); // return the absolute value of x
+    // y = clamp(st.x, 0.0, 1.0); // constrain x to lie between 0.0 and 1.0
+    // y = min(0.0, st.x); // return the lesser of x and 0.0
+    // y = max(0.0, st.x); // return the greater of x and 0.0
     
     // Shaping with Inigo functions
-    //y = impulse(12.0, st.x);
-    //y = almostIdentity(st.x, 0.4, 0.);
-    //y = almostUnitIdentity(st.x);
-    //y = expImpulse(st.x, 10.0);
-    //y = cubicPulse(0.5, 0.2, st.x);
-    //y = parabola(st.x,1.);
+    // y = impulse(12.0, st.x);
+    // y = almostIdentity(st.x, 0.4, 0.0);
+    // y = almostUnitIdentity(st.x);
+    // y = expImpulse(st.x, 10.0);
+    // y = cubicPulse(0.5, 0.2, st.x);
+    // y = parabola(st.x, 1.0);
     
     // Shaping with kynd functions
-    //y = kynd1(st.x, 0.5);
-    //y = kynd2(st.x, 3.5);
-    //y = kynd3(st.x, 2.5);
-    //y = kynd4(st.x, 0.5);
-    y = kynd5(st.x, 1.0);
+    // y = kynd1(st.x, 0.5);
+    // y = kynd2(st.x, 3.5);
+    // y = kynd3(st.x, 2.5);
+    // y = kynd4(st.x, 0.5);
+    // y = kynd5(st.x, 1.0);
     
     float pct = plot(st, y);
     

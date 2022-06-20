@@ -22,12 +22,15 @@ float doubleCubicSeatWithLinearBlend(float x, float a, float b) {
     float max_param_a = 1.0 - epsilon;
     float min_param_b = 0.0;
     float max_param_b = 1.0;
+    
     a = min(max_param_a, max(min_param_a, a));
     b = min(max_param_b, max(min_param_b, b));
+    
     // reverse for intelligibility
     b = 1.0 - b;
     
     float y = 0.0;
+    
     if (x <= a) {
         y = b*x + (1.0 - b) * a*(1.0 - pow(1.0 - x / a, 3.0));
     } else {

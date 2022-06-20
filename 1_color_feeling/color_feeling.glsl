@@ -38,14 +38,14 @@ void main() {
     // Blinking (anger)
     //float pct = blink(u_time, 14.0);
     // Smooth from blue to green (calming down)
-    float pct=clamp(u_time/10.,.0,1.);
+    float pct = clamp(u_time / 10.0, 0.0, 1.0);
     
     // Mix uses pct (a value from 0-1) to mix colors
     // I don't know how to do the blinking first and
     // when it reaches a certain value, do the smooth
     // transition between blue/green.
     //finalColor = mix(colorA, colorB, pct);
-    finalColor=mix(colorC,colorD,pct);
+    finalColor = mix(colorC, colorD, pct);
     
     gl_FragColor = vec4(finalColor, 1.0);
 }

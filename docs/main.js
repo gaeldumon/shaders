@@ -6,9 +6,9 @@ const canvasConfig = {
 }
 
 const shaderPaths = [
-    "1_color_feeling/color_feeling.glsl",
-    "2_gradients/william_turner_sunset.glsl",
-    "checkerboard/checkerboard.glsl"
+    "../1_color_feeling/color_feeling.glsl",
+    "../2_gradients/william_turner_sunset.glsl",
+    "../checkerboard/checkerboard.glsl"
 ]
 
 const mainWrapper = document.getElementById("main-wrapper");

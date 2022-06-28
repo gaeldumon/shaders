@@ -134,7 +134,7 @@ void main() {
     // y = ceil(sin(st.x));
     // y = floor(sin(st.x));
     
-    y = step(0.5, st.x);
+    // y = step(0.5, st.x);
     // y = mod(st.x, 0.5); // return x modulo of 0.5
     // y = fract(st.x); // return only the fraction part of a number
     // y = ceil(st.x); // nearest integer that is greater than or equal to x

@@ -9,7 +9,7 @@ uniform vec2 u_mouse;
 uniform float u_time;
 
 vec3 colorA = vec3(0.2392, 0.3412, 0.9098);
-vec3 colorB = vec3(1.0, 0.9451, 0.149);
+vec3 colorB = vec3(1.0, 0.9333, 0.0039);
 
 float plot(vec2 st, float pct) {
     return smoothstep(pct - 0.01, pct, st.y) -

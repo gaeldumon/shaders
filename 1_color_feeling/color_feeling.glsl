@@ -29,23 +29,22 @@ void main() {
     vec3 colorA = vec3(0.0, 0.0, 0.0);
     vec3 colorB = vec3(0.7, 0.1, 0.1);
     
-    // Nice blue and light green (calming down)
+    // Blue and light green (calming down)
     vec3 colorC = vec3(0.149, 0.3804, 0.9647);
     vec3 colorD = vec3(0.0902, 1.0, 0.6353);
     
     vec3 finalColor = vec3(0.0);
+    float pct = 0.0;
     
-    // Blinking (anger)
-    //float pct = blink(u_time, 14.0);
-    // Smooth from blue to green (calming down)
-    float pct = clamp(u_time / 10.0, 0.0, 1.0);
-    
-    // Mix uses pct (a value from 0-1) to mix colors
-    // I don't know how to do the blinking first and
-    // when it reaches a certain value, do the smooth
-    // transition between blue/green.
-    //finalColor = mix(colorA, colorB, pct);
-    finalColor = mix(colorC, colorD, pct);
+    if (u_time <= 5.0) {
+        // Blinking (anger)
+        pct = blink(u_time, 14.0);
+        finalColor = mix(colorA, colorB, pct);
+    } else {
+        // Smooth from blue to green (calming down)
+        pct = clamp(u_time / 8.0, 0.0, 1.0);
+        finalColor = mix(colorC, colorD, pct);
+    }
     
     gl_FragColor = vec4(finalColor, 1.0);
 }

@@ -36,9 +36,9 @@ void main() {
     vec3 finalColor = vec3(0.0);
     float pct = 0.0;
     
-    if (u_time <= 5.0) {
+    if (u_time <= 1.0) {
         // Blinking (anger)
-        pct = blink(u_time, 14.0);
+        pct = blink(u_time, 50.0);
         finalColor = mix(colorA, colorB, pct);
     } else {
         // Smooth from blue to green (calming down)

@@ -2,14 +2,12 @@
 precision mediump float;
 #endif
 
-#define PI 3.14159265359
-
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
 
 vec3 colorA = vec3(0.2392, 0.3412, 0.9098);
-vec3 colorB = vec3(1.0, 0.9333, 0.0039);
+vec3 colorB = vec3(1.0, 1.0, 0.0);
 
 float plot(vec2 st, float pct) {
     return smoothstep(pct - 0.01, pct, st.y) -
@@ -49,7 +47,7 @@ void main() {
     // The lines visualize the amount of colorA and
     // colorB to mix per channel
     pct.r = smoothstep(0.0, 0.2, st.y);
-    pct.g = doubleCubicSeatWithLinearBlend(st.y, 0.6, 0.8);
+    pct.g = doubleCubicSeatWithLinearBlend(st.y, 0.1, 1.0);
     pct.b = pow(st.y, 0.3);
     
     color = mix(colorA, colorB, pct);

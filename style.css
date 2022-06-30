@@ -3,8 +3,14 @@ html {
 }
 
 .title {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 50px;
+    font-size: 1.75em;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: whitesmoke;
+}
+
+#main-wrapper {
+    margin: 48px;
 }
 
 canvas {

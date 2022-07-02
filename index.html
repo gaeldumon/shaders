@@ -13,12 +13,51 @@
     <script src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
 
     <h1 class="title">Gaël | Shaders gallery</h1>
-    <div id="main-wrapper">
-        <canvas class="glslCanvas" data-fragment-url="1_color_feeling/color_feeling.glsl" width="264" height="264"></canvas>
-        <canvas class="glslCanvas" data-fragment-url="2_gradients/william_turner_sunset.glsl" width="264" height="264"></canvas>
-        <canvas class="glslCanvas" data-fragment-url="checkerboard/checkerboard.glsl" width="264" height="264"></canvas>
-        <canvas class="glslCanvas" data-fragment-url="opening/opening.glsl" width="264" height="264"></canvas>
-    </div>
+    <div id="main-wrapper"></div>
+
+    <script>
+        const shaders = [
+            {
+                path: "1_color_feeling/color_feeling.glsl",
+                width: 264,
+                height: 264,
+                name: "Color feeling",
+                language: "GLSL"
+            },
+            {
+                path: "2_gradients/william_turner_sunset.glsl",
+                width: 264,
+                height: 264,
+                name: "Temeraire sunset",
+                language: "GLSL"
+            },
+            {
+                path: "checkerboard/checkerboard.glsl",
+                width: 264,
+                height: 264,
+                name: "Checkerboard",
+                language: "GLSL"
+            },
+            {
+                path: "opening/opening.glsl",
+                width: 264,
+                height: 264,
+                name: "Opening",
+                language: "GLSL"
+            }
+        ];
+
+        const mainWrapper = document.getElementById("main-wrapper");
+        let shaderCanvas;
+        for (let shader of shaders) {
+            shaderCanvas = document.createElement("canvas");
+            shaderCanvas.setAttribute("class", "glslCanvas");
+            shaderCanvas.setAttribute("data-fragment-url", shader.path);
+            shaderCanvas.setAttribute("width", shader.width);
+            shaderCanvas.setAttribute("height", shader.height);
+            mainWrapper.appendChild(shaderCanvas);
+        }
+    </script>
 </body>
 
 </html>

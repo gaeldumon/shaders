@@ -1,19 +1,46 @@
 html {
     background-color: black;
+    font-family: 'consolas', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .title {
-    margin: 50px;
     font-size: 1.75em;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: whitesmoke;
 }
 
 #main-wrapper {
-    margin: 48px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-canvas {
-    margin: 2px;
+.canvas-container {
+    width: 264px;
+    height: 264px;
+    margin: 0.2em;
     position: relative;
+}
+
+.canvas-container .shader-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-left: 0.8em;
+    padding-right: 1em;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+    font-size: 0.8em;
+    background-color: rgba(1, 1, 1, 0.2);
+    color: white;
+}
+
+@media screen and (max-width: 560px) {
+    .title {
+        text-align: center;
+    }
+
+    #main-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;        
+    }
 }

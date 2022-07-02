@@ -48,14 +48,28 @@
         ];
 
         const mainWrapper = document.getElementById("main-wrapper");
+        let canvasContainer;
         let shaderCanvas;
+        let shaderLabel;
+
         for (let shader of shaders) {
+            canvasContainer = document.createElement("div");
+            canvasContainer.setAttribute("class", "canvas-container");
+
             shaderCanvas = document.createElement("canvas");
             shaderCanvas.setAttribute("class", "glslCanvas");
             shaderCanvas.setAttribute("data-fragment-url", shader.path);
             shaderCanvas.setAttribute("width", shader.width);
             shaderCanvas.setAttribute("height", shader.height);
-            mainWrapper.appendChild(shaderCanvas);
+
+            shaderLabel = document.createElement("div");
+            shaderLabel.setAttribute("class", "shader-label");
+            shaderLabel.textContent = shader.name;
+
+            canvasContainer.appendChild(shaderCanvas);
+            canvasContainer.appendChild(shaderLabel);
+
+            mainWrapper.appendChild(canvasContainer);
         }
     </script>
 </body>

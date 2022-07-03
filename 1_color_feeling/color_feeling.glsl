@@ -12,8 +12,6 @@
 precision mediump float;
 #endif
 
-#define PI 3.14159265359
-
 uniform vec2 u_resolution;
 uniform float u_time;
 
@@ -42,7 +40,7 @@ void main() {
         finalColor = mix(colorA, colorB, pct);
     } else {
         // Smooth from blue to green (calming down)
-        pct = clamp(u_time / 8.0, 0.0, 1.0);
+        pct = sin(u_time / 2.0);
         finalColor = mix(colorC, colorD, pct);
     }
     

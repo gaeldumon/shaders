@@ -23,6 +23,8 @@ float blink(float t, float freq) {
 }
 
 void main() {
+    vec2 st = gl_FragCoord.xy / u_resolution.xy;
+    
     // Black and red (anger emotion)
     vec3 colorA = vec3(0.0, 0.0, 0.0);
     vec3 colorB = vec3(0.7, 0.1, 0.1);
@@ -34,9 +36,9 @@ void main() {
     vec3 finalColor = vec3(0.0);
     float pct = 0.0;
     
-    if (u_time <= 1.0) {
+    if (0.7 + sin(u_time) < 0.0) {
         // Blinking (anger)
-        pct = blink(u_time, 50.0);
+        pct = blink(u_time, 25.0);
         finalColor = mix(colorA, colorB, pct);
     } else {
         // Smooth from blue to green (calming down)

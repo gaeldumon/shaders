@@ -1,16 +1,22 @@
 html {
     background-color: black;
-    font-family: 'consolas', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .title {
     font-size: 1.75em;
     color: whitesmoke;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 #main-wrapper {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .canvas-container {
@@ -41,6 +47,6 @@ html {
     #main-wrapper {
         display: flex;
         flex-direction: column;
-        align-items: center;        
+        align-items: center;
     }
 }

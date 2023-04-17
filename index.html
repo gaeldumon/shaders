@@ -18,39 +18,24 @@
     <script>
         const shaders = [
             {
-                path: "colors/anger_and_soothing.glsl",
-                width: 264,
-                height: 264,
+                path: "anger_and_soothing.glsl",
                 name: "Anger and soothing",
-                language: "GLSL"
             },
             {
-                path: "colors/flag.glsl",
-                width: 264,
-                height: 264,
+                path: "flaggy.glsl",
                 name: "Flaggy",
-                language: "GLSL"
             },
             {
-                path: "colors/william_turner_sunset.glsl",
-                width: 264,
-                height: 264,
+                path: "william_turner_sunset.glsl",
                 name: "Temeraire sunset",
-                language: "GLSL"
             },
             {
-                path: "checkerboard/checkerboard.glsl",
-                width: 264,
-                height: 264,
+                path: "checkerboard.glsl",
                 name: "Checkerboard",
-                language: "GLSL"
             },
             {
-                path: "opening/opening.glsl",
-                width: 264,
-                height: 264,
+                path: "opening.glsl",
                 name: "Opening",
-                language: "GLSL"
             }
         ];
 
@@ -65,9 +50,9 @@
 
             shaderCanvas = document.createElement("canvas");
             shaderCanvas.setAttribute("class", "glslCanvas");
-            shaderCanvas.setAttribute("data-fragment-url", shader.path);
-            shaderCanvas.setAttribute("width", shader.width);
-            shaderCanvas.setAttribute("height", shader.height);
+            shaderCanvas.setAttribute("data-fragment-url", `./src/${shader.path}`);
+            shaderCanvas.setAttribute("width", 264);
+            shaderCanvas.setAttribute("height", 264);
 
             shaderLabel = document.createElement("div");
             shaderLabel.setAttribute("class", "shader-label");

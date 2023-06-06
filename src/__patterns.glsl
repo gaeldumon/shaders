@@ -7,6 +7,14 @@ precision mediump float;
 uniform vec2 u_resolution;
 uniform float u_time;
 
+// Getting random (noise) pattern is complicated because there is 
+// no native random function in GLSL. 
+// The trick is to get a value so unpredictable that it looks random.
+// Careful with the values, other values can emerge a discernible pattern.
+float random(vec2 st) {
+    return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453123);
+}
+
 void main() {
     vec2 uv = gl_FragCoord.xy / u_resolution;
     
@@ -69,7 +77,24 @@ void main() {
     
     //strength = max(abs(uv.x - 0.5), abs(uv.y - 0.5));
     
-    strength = step(0.2, max(abs(uv.x - 0.5), abs(uv.y - 0.5)));
+    // RECTANGLE
+    //strength = step(0.2, max(abs(uv.x - 0.5), abs(uv.y - 0.5)));
     
+    // FRAME (multiplication of one square with another but smaller and inverted)
+    //strength = step(0.2, max(abs(uv.x - 0.5), abs(uv.y - 0.5)));
+    //strength *= 1.0 - step(0.25, max(abs(uv.x - 0.5), abs(uv.y - 0.5)));
+    
+    // COLUMNS GRADIENT
+    //strength = floor(uv.x * 10.0) / 10.0;
+    
+    // GRID GRADIENT
+    //strength = floor(uv.x * 10.0) / 10.0 * floor(uv.y * 10.0) / 10.0;
+    
+    // NOISE
+    //strength = random(uv);
+
+    //vec2 gridUv = vec2(floor(uv.x * 10.0) / 10.0, floor(uv.y * 10.0) / 10.0);
+    //strength = random(gridUv);
+
     gl_FragColor = vec4(vec3(strength), 1.0);
 }

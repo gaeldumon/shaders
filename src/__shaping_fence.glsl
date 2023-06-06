@@ -158,7 +158,7 @@ void main() {
     // y = kynd2(st.x, 3.5);
     // y = kynd3(st.x, 2.5);
     // y = kynd4(st.x, 0.5);
-    //y = kynd5(st.x, 1.0);
+    // y = kynd5(st.x, 1.0);
     
     float pct = plot(st, y);
     

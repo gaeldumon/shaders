@@ -30,9 +30,9 @@ float doubleCubicSeatWithLinearBlend(float x, float a, float b) {
     float y = 0.0;
     
     if (x <= a) {
-        y = b*x + (1.0 - b) * a*(1.0 - pow(1.0 - x / a, 3.0));
+        y = b * x + (1.0 - b) * a * (1.0 - pow(1.0 - x / a, 3.0));
     } else {
-        y = b*x + (1.0 - b) * (a + (1.0 - a) * pow((x - a) / (1.0 - a), 3.0));
+        y = b * x + (1.0 - b) * (a + (1.0 - a) * pow((x - a) / (1.0 - a), 3.0));
     }
     
     return y;
@@ -46,9 +46,11 @@ void main() {
     
     // The lines visualize the amount of colorA and
     // colorB to mix per channel
-    pct.r = smoothstep(0.0, 0.2, st.y);
-    pct.g = doubleCubicSeatWithLinearBlend(st.y, 0.1, 1.0);
-    pct.b = pow(st.y, 0.3);
+    // To see the plot transition lines, orientation = st.x
+    float orientation = st.y;
+    pct.r = smoothstep(0.0, 0.2, orientation);
+    pct.g = doubleCubicSeatWithLinearBlend(orientation, 0.1, 1.0);
+    pct.b = pow(orientation, 0.3);
     
     color = mix(colorA, colorB, pct);
     

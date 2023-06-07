@@ -58,15 +58,16 @@ void main() {
         // uv value before space repeating has been applied)
         vec3 color = palette(length(uv0) + i * 0.4 + u_time * 0.4);
         
+        // Concentric circles effect
         d = sin(d * 8.0 + u_time) / 8.0;
         d = abs(d);
         // Neon effect, see 1.0 / x function curve
         // pow function for contrast
-        d = pow(0.01 / d, 2.0);
+        d = pow(0.01 / d, 1.2);
         
         finalColor += color * d; 
     }
     
     // FragColor is the final color of the current pixel
-    gl_FragColor = vec4(vec3(finalColor), 1.0);
+    gl_FragColor = vec4(finalColor, 1.0);
 }

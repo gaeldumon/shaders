@@ -7,7 +7,7 @@ precision mediump float;
 uniform vec2 u_resolution;
 
 float checkerboard(vec2 uv) {
-    return (sin(uv.x * PI * 10.0) / sin(uv.y * PI * 10.0)) * 10.0;
+    return (sin(uv.x * PI * 10.0) / sin(uv.y * PI * 10.0)) * 100.0;
 }
 
 void main() {

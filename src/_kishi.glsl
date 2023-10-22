@@ -65,7 +65,7 @@ void main() {
         // pow function for contrast
         d = pow(0.01 / d, 1.2);
         
-        finalColor += color * d; 
+        finalColor += color * d;
     }
     
     // FragColor is the final color of the current pixel

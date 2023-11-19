@@ -1,6 +1,6 @@
 html {
-    background-color: black;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #c1baa8;
+    font-family: Courier, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .title {
@@ -21,8 +21,8 @@ html {
 
 .canvas-container {
     width: 264px;
-    height: 264px;
-    margin: 0.2em;
+    height: 380px;
+    margin: 0.5em;
     position: relative;
 }
 

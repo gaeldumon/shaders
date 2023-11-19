@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Gaël | Shaders gallery</title>
+    <title>SHADERS GALLERY</title>
 </head>
 
 <body>
     <script src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
 
-    <h1 class="title">Gaël | Shaders gallery</h1>
+    <h1 class="title">Gaël GLSL shaders gallery</h1>
     <div id="main-wrapper"></div>
 
     <script>
@@ -32,28 +32,34 @@
         ];
 
         const mainWrapper = document.getElementById("main-wrapper");
-        let canvasContainer;
-        let shaderCanvas;
-        let shaderLabel;
 
         for (let shader of shaders) {
-            canvasContainer = document.createElement("div");
+            const canvasContainer = document.createElement("div");
             canvasContainer.setAttribute("class", "canvas-container");
 
-            shaderCanvas = document.createElement("canvas");
+            const shaderCanvas = document.createElement("canvas");
             shaderCanvas.setAttribute("class", "glslCanvas");
             shaderCanvas.setAttribute("data-fragment-url", `./src/${shader.path}`);
             shaderCanvas.setAttribute("width", 264);
-            shaderCanvas.setAttribute("height", 264);
+            shaderCanvas.setAttribute("height", 380);
 
-            shaderLabel = document.createElement("div");
+            const shaderLabel = document.createElement("div");
             shaderLabel.setAttribute("class", "shader-label");
+            shaderLabel.style.visibility = "hidden";
             shaderLabel.textContent = shader.name;
 
             canvasContainer.appendChild(shaderCanvas);
             canvasContainer.appendChild(shaderLabel);
 
             mainWrapper.appendChild(canvasContainer);
+
+            canvasContainer.addEventListener("mouseover", () => {
+                shaderLabel.style.visibility = "visible";
+            });
+
+            canvasContainer.addEventListener("mouseout", () => {
+                shaderLabel.style.visibility = "hidden";
+            });
         }
     </script>
 </body>

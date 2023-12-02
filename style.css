@@ -1,52 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
+
 html {
-    background-color: #c1baa8;
-    font-family: Courier, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+    font-family: 'Playfair Display', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .title {
-    font-size: 1.75em;
-    color: whitesmoke;
-    text-align: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin: 2vw;
+    font-size: 2.5em;
+    font-weight: 600;
+    color: black;
 }
 
 #main-wrapper {
+    margin-left: 1.5vw;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }
 
 .canvas-container {
-    width: 264px;
-    height: 380px;
-    margin: 0.5em;
-    position: relative;
+
+    margin: 0.5vw;
+    display: flex;
+    flex-direction: column;
 }
 
-.canvas-container .shader-label {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding-left: 0.8em;
-    padding-right: 1em;
-    padding-top: 0.4em;
-    padding-bottom: 0.4em;
-    font-size: 0.8em;
-    background-color: rgba(1, 1, 1, 0.2);
-    color: white;
+.shader-label {
+    font-size: 0.9em;
+    font-family: 'Hanken Grotesk', sans-serif;
+    color: black;
 }
 
 @media screen and (max-width: 560px) {
     .title {
         text-align: center;
+        font-size: 1.5em;
     }
 
     #main-wrapper {
         display: flex;
         flex-direction: column;
+        justify-content: start;
         align-items: center;
+    }
+
+    .canvas-container {
+        margin-bottom: 2vh;
     }
 }

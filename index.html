@@ -6,62 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>SHADERS GALLERY</title>
+    <title>GLSL SHADERS GALLERY</title>
 </head>
 
 <body>
     <script src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
 
-    <h1 class="title">Gaël GLSL shaders gallery</h1>
-    <div id="main-wrapper"></div>
-
-    <script>
-        const shaders = [
-            {
-                path: "william_turner_sunset.glsl",
-                name: "Temeraire sunset",
-            },
-            {
-                path: "checkerboard.glsl",
-                name: "Checkerboard",
-            },
-            {
-                path: "enter.glsl",
-                name: "Enter",
-            }
-        ];
-
-        const mainWrapper = document.getElementById("main-wrapper");
-
-        for (let shader of shaders) {
-            const canvasContainer = document.createElement("div");
-            canvasContainer.setAttribute("class", "canvas-container");
-
-            const shaderCanvas = document.createElement("canvas");
-            shaderCanvas.setAttribute("class", "glslCanvas");
-            shaderCanvas.setAttribute("data-fragment-url", `./src/${shader.path}`);
-            shaderCanvas.setAttribute("width", 264);
-            shaderCanvas.setAttribute("height", 380);
-
-            const shaderLabel = document.createElement("div");
-            shaderLabel.setAttribute("class", "shader-label");
-            shaderLabel.style.visibility = "hidden";
-            shaderLabel.textContent = shader.name;
-
-            canvasContainer.appendChild(shaderCanvas);
-            canvasContainer.appendChild(shaderLabel);
-
-            mainWrapper.appendChild(canvasContainer);
-
-            canvasContainer.addEventListener("mouseover", () => {
-                shaderLabel.style.visibility = "visible";
-            });
-
-            canvasContainer.addEventListener("mouseout", () => {
-                shaderLabel.style.visibility = "hidden";
-            });
-        }
-    </script>
+    <h1 class="title">Gaël's gallery</h1>
+    <div id="main-wrapper">
+        <div class="canvas-container">
+            <canvas class="glslCanvas" data-fragment-url="./src/sunset.glsl" width="264" height="380"></canvas>
+            <div class="shader-label">Sunset</div>
+        </div>
+        <div class="canvas-container">
+            <canvas class="glslCanvas" data-fragment-url="./src/checkerboard.glsl" width="264" height="380"></canvas>
+            <div class="shader-label">Checkerboard</div>
+        </div>
+        <div class="canvas-container">
+            <canvas class="glslCanvas" data-fragment-url="./src/enter.glsl" width="264" height="380"></canvas>
+            <div class="shader-label">Enter</div>
+        </div>
+    </div>
 </body>
 
 </html>

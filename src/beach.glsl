@@ -8,37 +8,13 @@ precision mediump float;
 
 uniform vec2 u_resolution;
 
-vec3 colorA = vec3(0.8549019607843137, 0.4549019607843137, 0.13333333333333333);
-vec3 colorB = vec3(0.18823529411764706, 0.3215686274509804, 0.34901960784313724);
-
 float plot(vec2 st, float pct) {
     return smoothstep(pct - 0.01, pct, st.y) -
     smoothstep(pct, pct + 0.01, st.y);
 }
 
-float kynd1(float x, float expo) {
-    return 1.0 - pow(abs(x), expo);
-}
-
-float kynd2(float x, float expo) {
-    return pow(cos(PI * x / 2.0), expo);
-}
-
-float kynd3(float x, float expo) {
-    return 1.0 - pow(abs(sin(PI * x / 2.0)), expo);
-}
-
-float kynd4(float x, float expo) {
-    return pow(min(cos(PI * x / 2.0), 1.0 - abs(x)), expo);
-}
-
-float kynd5(float x, float expo) {
-    return 1.0 - pow(max(0.0, abs(x) * 2.0 - 1.0), expo);
-}
-
-float parabola(float x, float k) {
-    return pow(4.0 * x*(1.0 - x), k);
-}
+vec3 colorA = vec3(0.7451, 0.6392, 0.4902);
+vec3 colorB = vec3(0.03529411764705882, 0.5529411764705883, 0.6039215686274509);
 
 void main() {
     vec2 st = gl_FragCoord.xy / u_resolution.xy;
@@ -50,9 +26,9 @@ void main() {
     // colorB to mix per channel
     // To see the plot transition lines, orientation = st.x
     float orientation = st.y;
-    pct.r = smoothstep(0.0, 0.45, orientation);
+    pct.r = smoothstep(0.15, 0.55, orientation);
     pct.g = 0.0;
-    pct.b = pow(orientation, 0.3);
+    pct.b = 1.0;
     
     color = mix(colorA, colorB, pct);
     

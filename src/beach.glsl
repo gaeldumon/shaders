@@ -13,7 +13,7 @@ float plot(vec2 st, float pct) {
     smoothstep(pct, pct + 0.01, st.y);
 }
 
-vec3 colorA = vec3(0.7451, 0.6392, 0.4902);
+vec3 colorA = vec3(0.898, 0.5569, 0.0784);
 vec3 colorB = vec3(0.03529411764705882, 0.5529411764705883, 0.6039215686274509);
 
 void main() {

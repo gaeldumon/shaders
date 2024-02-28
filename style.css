@@ -2,12 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
 
-html {
-    background-color: white;
-    font-family: 'Playfair Display', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: black;
-}
-
 .title {
     margin: 2vw;
     font-size: 2.5em;
@@ -19,7 +13,7 @@ html {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
 }
 
@@ -30,18 +24,23 @@ html {
 }
 
 .shader-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em;
     margin-top: 0.5vw;
-    font-size: 0.9em;
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 0.8em;
+    font-family: Helvetica, Arial, sans-serif;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.shader-label {
+    font-weight: bold;
 }
 
 .shader-details a {
-    text-decoration: none;
-    color: darkslateblue;
-}
-
-.shader-details a:hover {
     text-decoration: underline;
+    color: white;
 }
 
 @media screen and (max-width: 560px) {
